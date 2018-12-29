@@ -4036,6 +4036,7 @@
 				<visible>Player.SeekEnabled + VideoPlayer.HasEpg + !Player.ChannelPreviewActive</visible>
 			</control>
 		</control>
+<!-- (removed)		
 		<control type="label">
 			<left>30</left>
 			<bottom>105</bottom>
@@ -4055,6 +4056,27 @@
 			<font>font12</font>
 			<visible>Integer.IsGreater(Playlist.Length,1) + Integer.IsGreater(Playlist.Position,0)</visible>
 		</control>
+-->
+<!-- added -->
+		<control type="label">
+			<left>30</left>
+			<bottom>105</bottom>
+			<right>30</right>
+			<height>30</height>
+			<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</label>
+			<font>font12</font>
+			<visible>Window.IsVisible(MusicVisualisation.xml)</visible>
+		</control>
+		<control type="label">
+			<left>30</left>
+			<bottom>105</bottom>
+			<right>30</right>
+			<height>30</height>
+			<label>$INFO[VideoPlayer.TVShowTitle,,]$INFO[VideoPlayer.Season, S,]$INFO[VideoPlayer.Episode,E,]$INFO[VideoPlayer.Title, ","]</label>
+			<font>font12</font>
+			<visible>Window.IsActive(fullscreenvideo)</visible>
+		</control>
+<!-- end added -->		
 		<control type="label">
 			<left>30</left>
 			<bottom>105</bottom>
