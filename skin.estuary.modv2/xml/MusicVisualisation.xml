@@ -15,14 +15,14 @@
 			<width>100%</width>
 			<height>100%</height>
 			<aspectratio>scale</aspectratio>
-			<fadetime>400</fadetime>
-			<timeperimage>5000</timeperimage>
+			<fadetime>600</fadetime>
+			<timeperimage>20000</timeperimage>
 			<randomize>true</randomize>
 			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
 			<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
 			<imagepath background="true" colordiffuse="$VAR[PlayerFanartOpacityVar]">$VAR[PlayerFanartVar]</imagepath>
-			<animation effect="zoom" start="110" end="130" center="auto" time="10000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animate_artistslideshow)">Conditional</animation>
-			<animation effect="slide" start="-30,-30" end="30,30" time="6000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animate_artistslideshow)">Conditional</animation>
+			<animation effect="zoom" start="110" end="115" center="auto" time="10123" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animate_artistslideshow)">Conditional</animation>
+			<animation effect="slide" start="-32,-18" end="32,18" time="5987" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animate_artistslideshow)">Conditional</animation>
 			<visible>!Skin.HasSetting(hide_background_fanart)</visible>
 		</control>
 		<control type="visualisation" id="2">
@@ -30,6 +30,67 @@
 			<visible>Player.HasAudio</visible>
 			<visible>Skin.HasSetting(enable_visualisation) + !Skin.HasSetting(show_visualisationbehind)</visible>
 		</control>
+		
+<!-- BEGIN added bottom panel  -->
+		<control type="group">
+			<description>Song info + clearlogo, at bottom</description>
+			<left>0</left>
+			<bottom>0</bottom>
+			<width>100%</width>
+			<height>120</height>
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>100%</width>
+				<height>100%</height>
+				<texture colordiffuse="80FFFFFF">lists/panel.png</texture>
+			</control>
+			<control type="label">
+				<left>240</left>
+				<top>0</top>
+				<align>left</align>
+				<font>font52_title</font>
+				<textcolor>FFFFFFFF</textcolor>
+				<label>$INFO[MusicPlayer.Title]</label>
+			</control>
+			<control type="label">
+				<left>240</left>
+				<top>70</top>
+				<align>left</align>
+				<font>font30_title</font>
+				<textcolor>FFFFFFFF</textcolor>
+				<label>$INFO[MusicPlayer.Artist]$INFO[MusicPlayer.Album, - ,]$INFO[MusicPlayer.Year, (,)]</label>
+			</control>
+			
+			<control type="image">
+				<bottom>0</bottom>
+				<right>10</right>
+				<width>25%</width>
+				<height>120</height>
+				<aspectratio align="right" aligny="center">keep</aspectratio>
+				<texture background="true" fallback="fallback.png">$VAR[PlayerInfoClearLogoVar]</texture>
+			</control>
+			
+			<visible>!Window.IsVisible(seekbar)</visible>
+			<animation effect="fade"  start="0"     end="100" time="400" condition="!Window.IsVisible(seekbar)">Visible</animation>
+			<animation effect="slide" start="0,210" end="0,0" time="350" condition="!Window.IsVisible(seekbar)">Conditional</animation>
+		</control>
+		
+		<control type="image">
+			<description>Cover art, at bottom left</description>
+			<left>10</left>
+			<bottom>10</bottom>
+			<width>210</width>
+			<height>210</height>
+			<aspectratio align="left" aligny="center">keep</aspectratio>
+			<texture background="true" fallback="DefaultAudio.png">$VAR[MusicPlayerCover]</texture>
+			
+			<visible>!Window.IsVisible(seekbar)</visible>
+			<animation effect="fade"  start="0"     end="100" time="400" condition="!Window.IsVisible(seekbar)">Visible</animation>
+			<animation effect="slide" start="0,210" end="0,0" time="350" condition="!Window.IsVisible(seekbar)">Conditional</animation>
+		</control>
+<!-- END added bottom panel -->
+		
 		<control type="group">
             <top>150</top>
             <visible>!Skin.HasSetting(enable_scrollingtext)</visible>
